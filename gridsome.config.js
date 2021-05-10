@@ -6,8 +6,20 @@
 
 module.exports = {
     siteName: 'Berenice Winery',
+    
+    transformers: {
+        remark: {
+          externalLinksTarget: '_blank',
+          externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+          anchorClassName: 'icon icon-link',
+          plugins: [
+            // ...global plugins
+          ]
+        }
+      },
+    
     siteUrl: '',
-    siteDescription: 'A simple starter for Gridsome using TailwindCSS and Markdown',
+    siteDescription: 'Berenice Winery',
     templates: {
       Post: '/blog/:title'
     },
@@ -17,10 +29,20 @@ module.exports = {
         options: {
           path: 'content/posts/**/*.md',
           typeName: 'Post',
+          remark : {
+              
+          }
         }
       },
       {
         use: 'gridsome-plugin-tailwindcss',
+      },
+      {
+        use: `gridsome-plugin-netlify-cms`,
+        options: {
+          publicPath: `/admin`,
+          modulePath: `src/admin/index.js`
+        }
       }
     ],
   }

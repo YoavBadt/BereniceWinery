@@ -22,4 +22,8 @@ export default function (Vue, { router, head, isClient }) {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Domine'
   })
+//   head.script.push({
+//     src : 'https://identity.netlify.com/v1/netlify-identity-widget.js',
+//     body: true
+//   })
 }
