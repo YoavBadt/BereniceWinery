@@ -1,37 +1,50 @@
 <template>
   <div class="text-gray-900">
 
-    <!-- Header & Navigation -->
-    <header class="p-6 flex flex-col md:flex-row items-center justify-between text-center">
-      <strong>
-        <g-link to="/" class="text-2xl">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="flex gap-x-4 text-gray-600">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/blog/">Blog</g-link>
-      </nav>
-    </header>
+    <Navbar style="height:8vh"/>
 
-    <!-- Page Content -->
-    <main class="p-6">
+   
+    <main style="height:92vh;overflow:auto;scrollbar-width: thin;">
       <slot/>
     </main>
 
   </div>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
+
+
+<script>
+import Navbar from '../components/navbar.vue'
+
+export default {
+  metaInfo: {
+    title: 'LayoutsDefault'
+  },
+  components:{
+    Navbar
   }
 }
-</static-query>
+</script>    
 
-<style scoped>
+<style >
 /* Add any Global Styles Here */
+main::-webkit-scrollbar {
+  width: 12px;               
+}
 
-.active--exact { /* Active Nav Link */
-  @apply text-gray-900;
+main::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: grey;   
+  border-radius: 6px;       
+  border: 3px solid rgb(237, 235, 236);  
+}
+
+main{
+    position:relative;
+    
+    background-color: rgb(237, 235, 236);
 }
 </style>
